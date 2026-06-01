@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
@@ -35,5 +36,10 @@ public class InMemoryTodoRepository implements TodoRepository {
         List<Todo> result = new ArrayList<>(todos.values());
         result.sort(Comparator.comparing(Todo::id));
         return result;
+    }
+
+    @Override
+    public Optional<Todo> findById(Long id) {
+        return Optional.ofNullable(todos.get(id));
     }
 }

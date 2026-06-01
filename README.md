@@ -54,6 +54,24 @@ Successful response:
 ]
 ```
 
+### Get todo by id
+
+```http
+GET /api/v1/todos/1
+```
+
+Successful response:
+
+```json
+{
+  "id": 1,
+  "title": "Write API test fixture",
+  "description": "Create a realistic Spring REST API",
+  "completed": false,
+  "createdAt": "2026-05-28T14:30:00Z"
+}
+```
+
 ## Run
 
 ```bash
