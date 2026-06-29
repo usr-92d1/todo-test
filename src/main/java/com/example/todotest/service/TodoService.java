@@ -1,6 +1,7 @@
 package com.example.todotest.service;
 
 import com.example.todotest.dto.CreateTodoRequest;
+import com.example.todotest.exception.TodoNotFoundException;
 import com.example.todotest.model.Todo;
 import com.example.todotest.repository.TodoRepository;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,11 @@ public class TodoService {
 
     public List<Todo> findAll() {
         return todoRepository.findAll();
+    }
+
+    public Todo findById(Long id) {
+        return todoRepository.findById(id)
+                .orElseThrow(() -> new TodoNotFoundException(id));
     }
 
     private String normalizeDescription(String description) {
